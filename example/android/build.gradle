@@ -18,4 +18,16 @@ buildscript {
     }
 }
 
+allprojects {
+    repositories {
+        String storageUrl = "https://storage.googleapis.com"
+        maven {
+            url '../../../flutter_sdk/build/host/outputs/repo'
+        }
+        maven {
+            url "$storageUrl/download.flutter.io"
+        }
+    }
+}
+
 apply plugin: "com.facebook.react.rootproject"

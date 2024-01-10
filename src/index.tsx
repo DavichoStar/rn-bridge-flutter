@@ -24,6 +24,6 @@ const RnBridgeFlutter = RnBridgeFlutterModule
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return RnBridgeFlutter.multiply(a, b);
-}
+export const openFlutter = (): void => {
+  return RnBridgeFlutter.openFlutter();
+};

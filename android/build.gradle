@@ -64,6 +64,10 @@ android {
     release {
       minifyEnabled false
     }
+    // Flutter
+    profile {
+      initWith debug
+    }
   }
 
   lintOptions {
@@ -93,6 +97,15 @@ android {
 repositories {
   mavenCentral()
   google()
+
+  // Flutter
+  String storageUrl = System.env.FLUTTER_STORAGE_BASE_URL ?: "https://storage.googleapis.com"
+  maven {
+    url "../flutter_sdk/build/host/outputs/repo"
+  }
+  maven {
+    url "$storageUrl/download.flutter.io"
+  }
 }
 
 
@@ -101,6 +114,10 @@ dependencies {
   // For > 0.71, this will be replaced by `com.facebook.react:react-android:$version` by react gradle plugin
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
+
+  debugImplementation 'com.ideosoftware.flutter_sdk:flutter_debug:1.0'
+  profileImplementation 'com.ideosoftware.flutter_sdk:flutter_profile:1.0'
+  releaseImplementation 'com.ideosoftware.flutter_sdk:flutter_release:1.0'
 }
 
 if (isNewArchitectureEnabled()) {
